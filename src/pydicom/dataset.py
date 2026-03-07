@@ -2040,7 +2040,7 @@ class Dataset:  # noqa: PLW1641
             Optional keyword parameters for the encoding plugin may also be
             present. See the :doc:`encoding plugins options
             </guides/encoding/encoder_plugin_options>` for more information.
-        """
+        """  # noqa: E501
         compress(
             self,
             transfer_syntax_uid,
