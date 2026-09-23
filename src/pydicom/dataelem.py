@@ -665,7 +665,7 @@ class DataElement:  # noqa: PLW1641
 
         return result
 
-    def __eq__(self, other: Any) -> Any:
+    def __eq__(self, other: Any) -> bool:
         """Compare `self` and `other` for equality.
 
         Returns
@@ -694,7 +694,7 @@ class DataElement:  # noqa: PLW1641
             if not self.is_buffered and not other.is_buffered:
                 if isinstance(self.value, float) and math.isnan(self.value):
                     return other.value is not None and math.isnan(other.value)
-                return self.value == other.value
+                return bool(self.value == other.value)
 
             try:
                 # `self` is buffered, `other` may or may not be buffered
@@ -708,7 +708,7 @@ class DataElement:  # noqa: PLW1641
 
         return NotImplemented
 
-    def __ne__(self, other: Any) -> Any:
+    def __ne__(self, other: Any) -> bool:
         """Compare `self` and `other` for inequality."""
         return not (self == other)
 

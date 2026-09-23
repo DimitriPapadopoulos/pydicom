@@ -42,9 +42,9 @@ class ConstrainedList(MutableSequence[T]):  # noqa: PLW1641
 
         self._list.extend([self._validate(item) for item in val])
 
-    def __eq__(self, other: Any) -> Any:
+    def __eq__(self, other: Any) -> bool:
         """Return ``True`` if `other` is equal to self."""
-        return self._list == other
+        return bool(self._list == other)
 
     @overload
     def __getitem__(self, index: int) -> T:
@@ -78,9 +78,9 @@ class ConstrainedList(MutableSequence[T]):  # noqa: PLW1641
         """Return the number of contained items."""
         return len(self._list)
 
-    def __ne__(self, other: Any) -> Any:
+    def __ne__(self, other: Any) -> bool:
         """Return ``True`` if `other` is not equal to self."""
-        return self._list != other
+        return bool(self._list != other)
 
     @overload
     def __setitem__(self, idx: int, val: T) -> None:
