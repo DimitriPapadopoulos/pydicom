@@ -10,7 +10,7 @@ stored as a single number and separated to (group, element) as required.
 #       element
 from contextlib import contextmanager
 import traceback
-from typing import Any, TypeAlias
+from typing import Any, TypeAlias, cast
 from collections.abc import Iterator
 
 
@@ -153,7 +153,7 @@ class BaseTag(int):
     #   https://docs.python.org/3/whatsnew/3.0.html#ordering-comparisons
     def __le__(self, other: Any) -> bool:
         """Return ``True`` if `self`  is less than or equal to `other`."""
-        return bool(self == other) or self < other
+        return cast(bool, self == other) or self < other
 
     def __lt__(self, other: Any) -> bool:
         """Return ``True`` if `self` is less than `other`."""
@@ -168,7 +168,7 @@ class BaseTag(int):
 
     def __ge__(self, other: Any) -> bool:
         """Return ``True`` if `self` is greater than or equal to `other`."""
-        return bool(self == other) or self > other
+        return cast(bool, self == other) or self > other
 
     def __gt__(self, other: Any) -> bool:
         """Return ``True`` if `self` is greater than `other`."""

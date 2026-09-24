@@ -3,7 +3,7 @@
 or any list of items that must all be the same type.
 """
 
-from typing import overload, Any, cast, TypeVar
+from typing import overload, Any, TypeVar, cast
 from collections.abc import Iterable, Callable, MutableSequence, Iterator
 
 
@@ -44,7 +44,7 @@ class ConstrainedList(MutableSequence[T]):  # noqa: PLW1641
 
     def __eq__(self, other: Any) -> bool:
         """Return ``True`` if `other` is equal to self."""
-        return bool(self._list == other)
+        return cast(bool, self._list == other)
 
     @overload
     def __getitem__(self, index: int) -> T:
@@ -80,7 +80,7 @@ class ConstrainedList(MutableSequence[T]):  # noqa: PLW1641
 
     def __ne__(self, other: Any) -> bool:
         """Return ``True`` if `other` is not equal to self."""
-        return bool(self._list != other)
+        return cast(bool, self._list != other)
 
     @overload
     def __setitem__(self, idx: int, val: T) -> None:
